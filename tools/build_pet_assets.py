@@ -625,6 +625,8 @@ def write_preview_page():
           <figure><video src="{name}/idle.webm" autoplay loop muted playsinline></video><figcaption>idle · 待机循环</figcaption></figure>
           <figure><video class="once" src="{name}/click.webm" muted playsinline></video><figcaption>click · 开心后回到待机</figcaption></figure>
           <figure><video class="once" src="{name}/drag.webm" muted playsinline></video><figcaption>drag · 拎起摆动后放下</figcaption></figure>
+          {f'<figure><video class="once" src="{name}/shy.webm" muted playsinline></video><figcaption>shy · 害羞，播完停住</figcaption></figure>' if (OUT / name / "shy.webm").exists() else ""}
+          {f'<figure><video class="once" src="{name}/sajiao.webm" muted playsinline></video><figcaption>sajiao · 撒娇，播完停住</figcaption></figure>' if (OUT / name / "sajiao.webm").exists() else ""}
         </div>
       </section>"""
         )
