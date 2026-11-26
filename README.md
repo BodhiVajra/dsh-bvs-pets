@@ -4,9 +4,9 @@ DSH 窗口里的桌面宠物插件。
 
 A desktop pet plugin that lives inside the DSH window.
 
-当前内置角色为 DeepSeek：透明 WebM 动画，可拖动，会沿窗口底部自行走动，并随机切换表情。右键可指定播放某一段。
+当前内置角色为 DeepSeek：透明 WebM 动画，可拖动。她沿窗口底部自己走动，路远时改成小跑；鼠标靠近会躲开，靠在边上让不开时会阻拦。平时随机切换表情，右键可以指定一段表情或阻拦。
 
-Currently features DeepSeek: transparent WebM animations, draggable, walks along the bottom of the window, and randomly changes expressions. Right-click to play a specific clip.
+Currently features DeepSeek: transparent WebM animations, draggable. She walks along the bottom of the window and jogs when the trip is long, sidesteps the cursor, and blocks when she cannot move aside. She also changes expressions on her own. Right-click to play a chosen expression or the block clip.
 
 目前仅在 DSH 窗口内运行。
 
@@ -16,9 +16,10 @@ Currently only runs inside the DSH window.
 
 - 透明背景 WebM 动画 / Transparent WebM animations
 - 可拖动定位 / Draggable
-- 沿窗口底部自动走动 / Auto-walks along the window bottom
+- 沿窗口底部自动走动，路远时小跑 / Walks along the window bottom, jogs on longer trips
+- 鼠标靠近时躲避，让不开时阻拦 / Sidesteps the cursor, and blocks when she cannot move aside
 - 随机切换表情 / Random expression changes
-- 右键菜单选择指定动画 / Right-click menu to select specific clips
+- 右键菜单选择表情或阻拦 / Right-click menu for an expression or the block clip
 - 位置与显示设置本地保存，刷新后保留 / Position and display settings are saved locally and persist across refreshes
 
 ## Installation / 安装
@@ -93,6 +94,10 @@ MIT
 - [x] 在 DSH 窗口内运行的基础宠物（DeepSeek）
 
   Basic pet (DeepSeek) running inside the DSH window
+
+- [x] 窗口内走动、小跑、躲避鼠标、阻拦
+
+  Walking, jogging, cursor dodge, and blocking inside the window
 
 - [ ] 更多内置角色 / More built-in characters
 - [ ] 更丰富的互动（点击反应、状态联动等）
