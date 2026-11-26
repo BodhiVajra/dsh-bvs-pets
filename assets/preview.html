@@ -2,17 +2,19 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8" />
-<title>桌宠素材预览</title>
+<title>DeepSeek 窗口宠物预览</title>
 <style>
-  body { margin: 0; font: 15px/1.4 -apple-system, sans-serif; background: #1c1c1f; color: #f4f1ea; }
-  main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+  :root { color-scheme: dark; }
+  body {
+    margin: 0;
+    font: 15px/1.45 -apple-system, "PingFang SC", sans-serif;
+    background: #1c1c1f;
+    color: #f4f1ea;
+  }
+  main { max-width: 980px; margin: 0 auto; padding: 28px 20px 64px; }
   h1 { font-size: 22px; font-weight: 650; margin: 0 0 8px; }
-  p { margin: 0 0 24px; color: #b9b4aa; }
-  h2 { font-size: 16px; margin: 28px 0 10px; }
-  .row { display: flex; gap: 16px; flex-wrap: wrap; }
-  figure { margin: 0; }
-  video {
-    width: 220px; height: 220px; display: block; cursor: pointer;
+  p { margin: 0 0 18px; color: #b9b4aa; }
+  .checker {
     background-color: #2a2a2e;
     background-image:
       linear-gradient(45deg, #3a3a40 25%, transparent 25%),
@@ -21,99 +23,93 @@
       linear-gradient(-45deg, transparent 75%, #3a3a40 75%);
     background-size: 24px 24px;
     background-position: 0 0, 0 12px, 12px -12px, -12px 0;
-    border-radius: 12px;
   }
+  .stage { width: 320px; height: 320px; border-radius: 16px; }
+  .stage video { width: 100%; height: 100%; display: block; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 22px; }
+  figure { margin: 0; }
+  figure video { width: 180px; height: 180px; display: block; border-radius: 12px; cursor: pointer; }
   figcaption { color: #b9b4aa; font-size: 12px; margin-top: 6px; }
+  .acts { display: flex; gap: 8px; margin-top: 12px; }
+  button {
+    font: inherit; color: inherit; background: #2e2e33; border: 0; border-radius: 8px;
+    padding: 6px 12px; cursor: pointer;
+  }
+  button:hover { background: #3a3a41; }
+  #status { min-height: 1.4em; color: #d6d1c7; }
 </style>
 </head>
 <body>
 <main>
-  <h1>九只桌宠</h1>
-  <p>透明底 VP9。点击和拖拽都会回到待机姿势，点画面可重播。</p>
-  
-      <section>
-        <h2>豆包</h2>
-        <div class="row">
-          <figure><video src="doubao/idle.webm" autoplay loop muted playsinline></video><figcaption>idle · 待机循环</figcaption></figure>
-          <figure><video class="once" src="doubao/click.webm" muted playsinline></video><figcaption>click · 开心后回到待机</figcaption></figure>
-          <figure><video class="once" src="doubao/drag.webm" muted playsinline></video><figcaption>drag · 拎起摆动后放下</figcaption></figure>
-        </div>
-      </section>
-      <section>
-        <h2>DeepSeek</h2>
-        <div class="row">
-          <figure><video src="deepseek/idle.webm" autoplay loop muted playsinline></video><figcaption>idle · 待机循环</figcaption></figure>
-          <figure><video class="once" src="deepseek/click.webm" muted playsinline></video><figcaption>click · 开心后回到待机</figcaption></figure>
-          <figure><video class="once" src="deepseek/drag.webm" muted playsinline></video><figcaption>drag · 拎起摆动后放下</figcaption></figure>
-          <figure><video class="once" src="deepseek/shy.webm" muted playsinline></video><figcaption>shy · 害羞，播完停住</figcaption></figure>
-          <figure><video class="once" src="deepseek/sajiao.webm" muted playsinline></video><figcaption>sajiao · 撒娇，播完停住</figcaption></figure>
-        </div>
-      </section>
-      <section>
-        <h2>ChatGPT</h2>
-        <div class="row">
-          <figure><video src="chatgpt/idle.webm" autoplay loop muted playsinline></video><figcaption>idle · 待机循环</figcaption></figure>
-          <figure><video class="once" src="chatgpt/click.webm" muted playsinline></video><figcaption>click · 开心后回到待机</figcaption></figure>
-          <figure><video class="once" src="chatgpt/drag.webm" muted playsinline></video><figcaption>drag · 拎起摆动后放下</figcaption></figure>
-        </div>
-      </section>
-      <section>
-        <h2>Claude</h2>
-        <div class="row">
-          <figure><video src="claude/idle.webm" autoplay loop muted playsinline></video><figcaption>idle · 待机循环</figcaption></figure>
-          <figure><video class="once" src="claude/click.webm" muted playsinline></video><figcaption>click · 开心后回到待机</figcaption></figure>
-          <figure><video class="once" src="claude/drag.webm" muted playsinline></video><figcaption>drag · 拎起摆动后放下</figcaption></figure>
-        </div>
-      </section>
-      <section>
-        <h2>Grok</h2>
-        <div class="row">
-          <figure><video src="grok/idle.webm" autoplay loop muted playsinline></video><figcaption>idle · 待机循环</figcaption></figure>
-          <figure><video class="once" src="grok/click.webm" muted playsinline></video><figcaption>click · 开心后回到待机</figcaption></figure>
-          <figure><video class="once" src="grok/drag.webm" muted playsinline></video><figcaption>drag · 拎起摆动后放下</figcaption></figure>
-        </div>
-      </section>
-      <section>
-        <h2>DS-Claude</h2>
-        <div class="row">
-          <figure><video src="ds_claude/idle.webm" autoplay loop muted playsinline></video><figcaption>idle · 待机循环</figcaption></figure>
-          <figure><video class="once" src="ds_claude/click.webm" muted playsinline></video><figcaption>click · 开心后回到待机</figcaption></figure>
-          <figure><video class="once" src="ds_claude/drag.webm" muted playsinline></video><figcaption>drag · 拎起摆动后放下</figcaption></figure>
-        </div>
-      </section>
-      <section>
-        <h2>GLM</h2>
-        <div class="row">
-          <figure><video src="glm/idle.webm" autoplay loop muted playsinline></video><figcaption>idle · 待机循环</figcaption></figure>
-          <figure><video class="once" src="glm/click.webm" muted playsinline></video><figcaption>click · 开心后回到待机</figcaption></figure>
-          <figure><video class="once" src="glm/drag.webm" muted playsinline></video><figcaption>drag · 拎起摆动后放下</figcaption></figure>
-        </div>
-      </section>
-      <section>
-        <h2>Gemini</h2>
-        <div class="row">
-          <figure><video src="gemini/idle.webm" autoplay loop muted playsinline></video><figcaption>idle · 待机循环</figcaption></figure>
-          <figure><video class="once" src="gemini/click.webm" muted playsinline></video><figcaption>click · 开心后回到待机</figcaption></figure>
-          <figure><video class="once" src="gemini/drag.webm" muted playsinline></video><figcaption>drag · 拎起摆动后放下</figcaption></figure>
-        </div>
-      </section>
-      <section>
-        <h2>Kimi</h2>
-        <div class="row">
-          <figure><video src="kimi/idle.webm" autoplay loop muted playsinline></video><figcaption>idle · 待机循环</figcaption></figure>
-          <figure><video class="once" src="kimi/click.webm" muted playsinline></video><figcaption>click · 开心后回到待机</figcaption></figure>
-          <figure><video class="once" src="kimi/drag.webm" muted playsinline></video><figcaption>drag · 拎起摆动后放下</figcaption></figure>
-        </div>
-      </section>
+  <h1>DeepSeek</h1>
+  <p>棋盘格上应透出格子，四角不能是黑块。舞台上的片子播完停在最后一帧，再用按钮换下一段。</p>
+  <div class="checker stage"><video id="stage" muted playsinline></video></div>
+  <div class="acts">
+    <button data-src="deepseek/shy.webm">害羞</button>
+    <button data-src="deepseek/sajiao.webm">撒娇</button>
+    <button data-src="deepseek/eat.webm">吃饭</button>
+    <button data-src="deepseek/angry.webm">生气</button>
+    <button data-src="deepseek/cute.webm">装可爱</button>
+    <button data-src="deepseek/sad.webm">伤心</button>
+    <button data-src="deepseek/argue.webm">狡辩</button>
+    <button data-src="deepseek/show.webm">表现</button>
+  </div>
+  <p id="status"></p>
+  <div class="row">
+    <figure><video class="checker" src="deepseek/shy.webm" muted playsinline></video><figcaption>shy · 害羞，播完停住</figcaption></figure>
+    <figure><video class="checker" src="deepseek/sajiao.webm" muted playsinline></video><figcaption>sajiao · 撒娇，播完停住</figcaption></figure>
+    <figure><video class="checker" src="deepseek/eat.webm" muted playsinline></video><figcaption>eat · 吃饭，播完停住</figcaption></figure>
+    <figure><video class="checker" src="deepseek/angry.webm" muted playsinline></video><figcaption>angry · 生气，播完停住</figcaption></figure>
+    <figure><video class="checker" src="deepseek/cute.webm" muted playsinline></video><figcaption>cute · 装可爱，播完停住</figcaption></figure>
+    <figure><video class="checker" src="deepseek/sad.webm" muted playsinline></video><figcaption>sad · 伤心，播完停住</figcaption></figure>
+    <figure><video class="checker" src="deepseek/argue.webm" muted playsinline></video><figcaption>argue · 狡辩，播完停住</figcaption></figure>
+    <figure><video class="checker" src="deepseek/show.webm" muted playsinline></video><figcaption>show · 表现，播完停住</figcaption></figure>
+  </div>
 </main>
 <script>
-  for (const v of document.querySelectorAll('video.once')) {
-    v.play();
-    v.addEventListener('click', () => { v.currentTime = 0; v.play(); });
+  var stage = document.getElementById('stage')
+  var caption = document.getElementById('status')
+  var labels = {
+    'deepseek/shy.webm': '害羞',
+    'deepseek/sajiao.webm': '撒娇',
+    'deepseek/eat.webm': '吃饭',
+    'deepseek/angry.webm': '生气',
+    'deepseek/cute.webm': '装可爱',
+    'deepseek/sad.webm': '伤心',
+    'deepseek/argue.webm': '狡辩',
+    'deepseek/show.webm': '表现',
   }
-  for (const v of document.querySelectorAll('video:not(.once)')) {
-    v.addEventListener('click', () => { if (v.paused) v.play(); else v.pause(); });
+  function labelOf(src) {
+    var key = String(src || '').replace(/^.*\//, 'deepseek/')
+    return labels[key] || labels[src] || '这段'
   }
+  function show(src) {
+    caption.textContent = labelOf(src) + ' · 播放中'
+    stage.loop = false
+    if (stage.getAttribute('src') !== src) stage.src = src
+    else stage.currentTime = 0
+    var playing = stage.play()
+    if (playing && playing.catch) playing.catch(function () {})
+  }
+  function markHeld() {
+    if (stage.duration && stage.currentTime >= stage.duration - 0.05) {
+      caption.textContent = labelOf(stage.getAttribute('src')) + ' · 停在最后一帧'
+    }
+  }
+  stage.addEventListener('ended', markHeld)
+  stage.addEventListener('pause', markHeld)
+  document.querySelector('.acts').addEventListener('click', function (event) {
+    var button = event.target.closest('button')
+    if (!button) return
+    show(button.dataset.src)
+  })
+  document.querySelector('.row').addEventListener('click', function (event) {
+    var video = event.target.closest('video')
+    if (!video) return
+    video.currentTime = 0
+    video.play()
+  })
+  show('deepseek/shy.webm')
 </script>
 </body>
 </html>

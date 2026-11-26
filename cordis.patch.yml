@@ -1,0 +1,4 @@
+# dsh-bvs-pets bundle patch: one floating pet, mounted by a plain insert.
+- insert:
+    - id: dsh-bvs-pets
+      name: 'dsh-bvs-pets'

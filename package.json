@@ -1,0 +1,27 @@
+{
+  "name": "dsh-bvs-pets",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DSH 窗口宠物。透明 WebM 角色，可拖动，会自己换表情。",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "web",
+    "assets",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.2.1-rc.2"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

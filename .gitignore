@@ -3,3 +3,7 @@
 .DS_Store
 __pycache__/
 *.pyc
+
+# 原始绿幕、抠像脚本、工艺说明和旧资源，留在本机
+tools/
+docs/

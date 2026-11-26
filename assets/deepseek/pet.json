@@ -1,0 +1,16 @@
+{
+  "label": "DeepSeek",
+  "displaySize": 240,
+  "entrance": "show",
+  "home": "idle",
+  "actions": {
+    "shy": { "label": "害羞", "play": "once", "then": "home", "group": "social", "cooldown": 20 },
+    "sajiao": { "label": "撒娇", "play": "once", "then": "home", "group": "social", "cooldown": 25 },
+    "angry": { "label": "生气", "play": "once", "then": "home", "group": "protest", "cooldown": 12 },
+    "eat": { "label": "吃饭", "play": "once", "then": "home", "group": "meal", "cooldown": 70 },
+    "cute": { "label": "装可爱", "play": "once", "then": "home", "group": "social", "cooldown": 20 },
+    "sad": { "label": "伤心", "play": "once", "then": "home", "group": "social", "cooldown": 20 },
+    "argue": { "label": "狡辩", "play": "once", "then": "home", "group": "social", "cooldown": 20 },
+    "show": { "label": "表现", "play": "once", "then": "home", "group": "social", "cooldown": 20 }
+  }
+}
