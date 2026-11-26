@@ -1,59 +1,107 @@
 # dsh-bvs-pets
 
-DSH 窗口里的一只宠物。现在舞台上是 DeepSeek：透明 WebM，可拖动，自己沿窗口底边走动，也会自己换表情。右键她可以指定一段来播。
+DSH 窗口里的桌面宠物插件。
 
-这是第一期，只活在 DSH 窗口里，还不会跑到系统桌面上去。
+A desktop pet plugin that lives inside the DSH window.
 
-## 目录
+当前内置角色为 DeepSeek：透明 WebM 动画，可拖动，会沿窗口底部自行走动，并随机切换表情。右键可指定播放某一段。
 
-```
-lib/index.js            宿主侧：提供 /dsh-bvs-pets 下的脚本、目录和片子
-web/widget.js           页面侧：播放、拖动、随机表情、右键菜单
-assets/<角色>/          一只宠物。有 pet.json 才会出现
-assets/preview.html     棋盘格上检查透明和换段
-scripts/install.mjs     链进某个 DSH 配置
-```
+Currently features DeepSeek: transparent WebM animations, draggable, walks along the bottom of the window, and randomly changes expressions. Right-click to play a specific clip.
 
-原始绿幕、抠像脚本、工艺说明和旧资源都在本机，不进仓库。绿幕原片在 `docs/原始绿幕/`，旧的九只宠物在 `docs/旧资源/`，说明都写在各自目录里。
+目前仅在 DSH 窗口内运行。
 
-## 装进 DSH
+Currently only runs inside the DSH window.
 
-```sh
+## Features / 功能
+
+- 透明背景 WebM 动画 / Transparent WebM animations
+- 可拖动定位 / Draggable
+- 沿窗口底部自动走动 / Auto-walks along the window bottom
+- 随机切换表情 / Random expression changes
+- 右键菜单选择指定动画 / Right-click menu to select specific clips
+- 位置与显示设置本地保存，刷新后保留 / Position and display settings are saved locally and persist across refreshes
+
+## Installation / 安装
+
+```bash
 node scripts/install.mjs --profile web
 ```
 
-装好后重启 DSH。卸掉用 `node scripts/uninstall.mjs --profile web`。
+安装后重启 DSH。
 
-插件名是 `dsh-bvs-pets`。页面上的地址是 `/dsh-bvs-pets`。她的位置和显示设置仍记在原来的本地键里，刷新后不会丢。
+Restart DSH after installation.
 
-## 本地看一眼
+卸载 / Uninstall：
 
-```sh
+```bash
+node scripts/uninstall.mjs --profile web
+```
+
+插件名称 / Plugin name：`dsh-bvs-pets`
+
+访问路径 / Served at：`/dsh-bvs-pets`
+
+## Local Preview / 本地预览
+
+```bash
 node scripts/smoke.mjs
 python3 -m http.server 8765 --bind 127.0.0.1 --directory assets
 ```
 
-打开 `http://127.0.0.1:8765/preview.html`。棋盘格应该从角色四周透出来。
+打开 / Open：[http://127.0.0.1:8765/preview.html](http://127.0.0.1:8765/preview.html)
 
-## 加一段表情
+预览页使用棋盘格背景，可检查透明效果与动画切换。
 
-把做好的 `<名字>.webm` 放进 `assets/deepseek/`，再在 `pet.json` 里加一行 `label`、`play`、`group`。刷新即可，不用改窗口代码。
+The preview page uses a checkerboard background to check transparency and clip switching.
 
-## 放到 GitHub 上的文件
+## Adding Expressions / 添加表情
 
-仓库里要有、克隆下来就能跑的：
+1. 将制作好的 `<名字>.webm` 放入 `assets/deepseek/`
 
-- `lib/`、`web/`、`scripts/`、`package.json`、`cordis.patch.yml`
-- `assets/deepseek/` 里的成品片子和 `pet.json`、`idle.png`
-- `assets/preview.html`
-- `README.md`、`LICENSE`、`.gitignore`
+   Put the finished `<name>.webm` into `assets/deepseek/`
 
-不要放上去的，已经写在 `.gitignore` 里：
+2. 在 `pet.json` 中添加对应条目（`label`、`play`、`group`）
 
-| 路径 | 原因 |
-|---|---|
-| `tools/`、`docs/` | 抠像脚本、工艺说明、`docs/原始绿幕/` 里的绿幕原片，以及 `docs/旧资源/` 里的旧宠物 |
-| `.venv/`、`.vendor/` | 本机 Python 环境和 ffmpeg |
-| `.DS_Store`、`__pycache__/` | 系统缓存 |
+   Add an entry in `pet.json` (with `label`, `play`, `group`)
 
-`package.json` 里的 `"private": true` 只是不往 npm 发。GitHub 仓库本身可以公开。
+3. 刷新即可，无需改代码
+
+   Refresh the page. No code changes needed.
+
+## Project Structure / 目录结构
+
+```text
+lib/index.js            # 宿主侧 / Host side
+web/widget.js           # 页面侧 / Page side
+assets/<角色>/          # 宠物资源（需 pet.json）/ Pet assets (requires pet.json)
+assets/preview.html     # 本地预览页 / Local preview
+scripts/install.mjs     # 安装脚本 / Install script
+```
+
+## Notes / 说明
+
+仓库中已包含可直接运行的完整内容。
+
+The repository contains everything needed to run.
+
+## License
+
+MIT
+
+## Roadmap
+
+- [x] 在 DSH 窗口内运行的基础宠物（DeepSeek）
+
+  Basic pet (DeepSeek) running inside the DSH window
+
+- [ ] 更多内置角色 / More built-in characters
+- [ ] 更丰富的互动（点击反应、状态联动等）
+
+  Richer interactions (click reactions, state linkage, etc.)
+
+- [ ] 支持显示到系统桌面 / Support for system desktop
+- [ ] 更方便的角色安装与切换方式
+
+  Easier character installation and switching
+
+- [ ] 主题与自定义外观 / Themes and custom appearance
