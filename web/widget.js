@@ -145,7 +145,7 @@
     var actions = pet.actions || {}
     return Object.keys(actions).filter(function (name) {
       var group = actions[name].group
-      return group === 'social' || group === 'meal' || group === 'protest'
+      return group === 'social' || group === 'meal' || group === 'protest' || group === 'block'
     })
   }
 
@@ -184,6 +184,7 @@
   var ACTION_LABELS = {
     shy: '害羞', sajiao: '撒娇', eat: '吃饭', angry: '生气',
     cute: '装可爱', sad: '伤心', argue: '狡辩', show: '表现',
+    walk: '走路', jog: '小跑', dodge: '躲避', block: '阻拦',
   }
 
   function actionLabel(action, name) {
@@ -264,8 +265,8 @@
 
   function setFace(node, dir) {
     if (dir) node.face = dir < 0 ? -1 : 1
-    var walking = actionOf(node.pet, node.current)
-    var mirror = walking && walking.group === 'walk' && node.face < 0
+    var action = actionOf(node.pet, node.current)
+    var mirror = action && (action.group === 'walk' || action.group === 'jog' || action.group === 'dodge') && node.face < 0
     node.video.style.transform = mirror ? 'scaleX(-1)' : ''
   }
 
@@ -417,7 +418,8 @@
     var dx = to.left - node.pos.left
     var dy = to.bottom - node.pos.bottom
     if (Math.hypot(dx, dy) < 8) return
-    var speed = kind === 'dodge' ? 240 : 92
+    var far = Math.abs(dx) > 380 && clipByGroup(node.pet, 'jog')
+    var speed = kind === 'dodge' ? 240 : far ? 168 : 92
     node.glide = {
       from: { left: node.pos.left, bottom: node.pos.bottom },
       to: to,
@@ -426,11 +428,14 @@
       kind: kind,
     }
     setFace(node, dx || node.face || 1)
-    if (!isRest(node)) return
-    var dodge = kind === 'dodge' ? clipByGroup(node.pet, 'dodge') : ''
-    var walk = clipByGroup(node.pet, 'walk')
-    if (dodge) play(node, dodge)
-    else if (walk && node.current !== walk) play(node, walk)
+    var current = actionOf(node.pet, node.current)
+    var moving = current && (current.group === 'walk' || current.group === 'jog')
+    if (!isRest(node) && !(kind === 'dodge' && moving)) return
+    var name = ''
+    if (kind === 'dodge') name = clipByGroup(node.pet, 'dodge') || clipByGroup(node.pet, 'jog') || clipByGroup(node.pet, 'walk')
+    else if (far) name = clipByGroup(node.pet, 'jog')
+    else name = clipByGroup(node.pet, 'walk')
+    if (name && node.current !== name) play(node, name)
   }
 
   function restoreHeld(node) {
@@ -463,7 +468,7 @@
     node.glide = null
     remember(node)
     var action = actionOf(node.pet, node.current)
-    if (action && (action.group === 'walk' || action.group === 'dodge')) {
+    if (action && (action.group === 'walk' || action.group === 'jog' || action.group === 'dodge')) {
       if (node.pet.home && node.pet.home !== node.current) play(node, node.pet.home)
       else if (node.held && node.held !== node.current) restoreHeld(node)
       else {
@@ -497,6 +502,10 @@
         var left = node.pos.left + dir * (150 + Math.random() * 80)
         var spot = clearSpot(left) || clampPos({ left: left, bottom: 16 })
         beginGlide(node, spot.left, spot.bottom, 'dodge')
+        if (!node.glide && isRest(node)) {
+          var block = clipByGroup(node.pet, 'block')
+          if (block && node.current !== block && cooled(node, block)) play(node, block)
+        }
       }
     } else if (!cursorNear(node)) {
       node.hoverSince = 0

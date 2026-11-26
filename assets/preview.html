@@ -53,6 +53,10 @@
     <button data-src="deepseek/sad.webm">伤心</button>
     <button data-src="deepseek/argue.webm">狡辩</button>
     <button data-src="deepseek/show.webm">表现</button>
+    <button data-src="deepseek/walk.webm">走路</button>
+    <button data-src="deepseek/jog.webm">小跑</button>
+    <button data-src="deepseek/dodge.webm">躲避</button>
+    <button data-src="deepseek/block.webm">阻拦</button>
   </div>
   <p id="status"></p>
   <div class="row">
@@ -64,6 +68,10 @@
     <figure><video class="checker" src="deepseek/sad.webm" muted playsinline></video><figcaption>sad · 伤心，播完停住</figcaption></figure>
     <figure><video class="checker" src="deepseek/argue.webm" muted playsinline></video><figcaption>argue · 狡辩，播完停住</figcaption></figure>
     <figure><video class="checker" src="deepseek/show.webm" muted playsinline></video><figcaption>show · 表现，播完停住</figcaption></figure>
+    <figure><video class="checker" src="deepseek/walk.webm" muted playsinline loop></video><figcaption>walk · 走路，来回循环</figcaption></figure>
+    <figure><video class="checker" src="deepseek/jog.webm" muted playsinline loop></video><figcaption>jog · 小跑，路远时循环</figcaption></figure>
+    <figure><video class="checker" src="deepseek/dodge.webm" muted playsinline></video><figcaption>dodge · 躲避，播完停住</figcaption></figure>
+    <figure><video class="checker" src="deepseek/block.webm" muted playsinline></video><figcaption>block · 阻拦，播完停住</figcaption></figure>
   </div>
 </main>
 <script>
@@ -78,6 +86,10 @@
     'deepseek/sad.webm': '伤心',
     'deepseek/argue.webm': '狡辩',
     'deepseek/show.webm': '表现',
+    'deepseek/walk.webm': '走路',
+    'deepseek/jog.webm': '小跑',
+    'deepseek/dodge.webm': '躲避',
+    'deepseek/block.webm': '阻拦',
   }
   function labelOf(src) {
     var key = String(src || '').replace(/^.*\//, 'deepseek/')

@@ -11,6 +11,10 @@
     "cute": { "label": "装可爱", "play": "once", "then": "home", "group": "social", "cooldown": 20 },
     "sad": { "label": "伤心", "play": "once", "then": "home", "group": "social", "cooldown": 20 },
     "argue": { "label": "狡辩", "play": "once", "then": "home", "group": "social", "cooldown": 20 },
-    "show": { "label": "表现", "play": "once", "then": "home", "group": "social", "cooldown": 20 }
+    "show": { "label": "表现", "play": "once", "then": "home", "group": "social", "cooldown": 20 },
+    "walk": { "label": "走路", "play": "loop", "then": "hold", "group": "walk" },
+    "jog": { "label": "小跑", "play": "loop", "then": "hold", "group": "jog" },
+    "dodge": { "label": "躲避", "play": "once", "then": "hold", "group": "dodge" },
+    "block": { "label": "阻拦", "play": "once", "then": "home", "group": "block", "cooldown": 16 }
   }
 }
